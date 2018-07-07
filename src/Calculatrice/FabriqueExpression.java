@@ -34,6 +34,7 @@ public class FabriqueExpression {
 
 	public Expression batirFromToInfix(String expression) throws EmptyStackException {
 		char[] arrExpression = expression.toCharArray();
+		
 		Stack<Expression> chiffres = new Stack<Expression>();
 		Stack<Character> oper = new Stack<Character>();
 		
@@ -50,15 +51,21 @@ public class FabriqueExpression {
 				
 				double chiffre = Double.parseDouble(sBuilder.toString());
 				chiffres.push(new Scalaire(chiffre));
-			} else if (arrExpression[i] == '(') {
+			} 
+			
+			if (arrExpression[i] == '(') {
 				oper.push(arrExpression[i]);
 			
-			} else if (arrExpression[i] == ')') {
+			} 
+			
+			if (arrExpression[i] == ')') {
 				while (oper.peek() != '(')
 					chiffres.push(faireCalcul(chiffres.pop(), chiffres.pop(), oper.pop()));
 				oper.pop();
 			
-			} else if (arrExpression[i] == '+' || arrExpression[i] == '-' || arrExpression[i] == '*' || arrExpression[i] == '/') {
+			} 
+			
+			if (arrExpression[i] == '+' || arrExpression[i] == '-' || arrExpression[i] == '*' || arrExpression[i] == '/') {
 				while (!oper.empty() && calculAFaire(arrExpression[i], oper.peek()))
 					chiffres.push(faireCalcul(chiffres.pop(), chiffres.pop(), oper.pop()));
 				oper.push(arrExpression[i]);
