@@ -11,7 +11,7 @@ public class MainActivity {
 		String expression;
 		
 		try {
-			expression = "(2+2)";
+			expression = "(2+2)/10";
 			
 			FabriqueExpression exp = new FabriqueExpression();
 			

@@ -49,6 +49,7 @@ public class FabriqueExpression {
 				while(i < arrExpression.length && (Character.isDigit(arrExpression[i]) || arrExpression[i] == '.'))
 					sBuilder.append(arrExpression[i++]);
 				
+				--i;
 				double chiffre = Double.parseDouble(sBuilder.toString());
 				chiffres.push(new Scalaire(chiffre));
 			} 
@@ -56,7 +57,7 @@ public class FabriqueExpression {
 			if (arrExpression[i] == '(') {
 				oper.push(arrExpression[i]);
 			
-			} 
+			}
 			
 			if (arrExpression[i] == ')') {
 				while (oper.peek() != '(')
